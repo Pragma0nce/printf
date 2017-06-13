@@ -6,9 +6,11 @@
 /*   By: kcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 11:43:21 by kcoetzee          #+#    #+#             */
-/*   Updated: 2017/06/13 14:47:32 by kcoetzee         ###   ########.fr       */
+/*   Updated: 2017/06/13 15:12:22 by kcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "main.h"
 
 void extract_flags(char *str, char *dest)
 {
@@ -45,12 +47,10 @@ int     extract_precision(char *str)
     return (atoi(&str[i]));
 }
 
-char    *extract_length_modifier(char *str)
+void    extract_length_modifier(char *str)
 {
-    return (str);
 }
 
-char    *extract_conversion_specifier(char *str)
+void    extract_conversion_specifier(char *str)
 {
-    return (str);
 }

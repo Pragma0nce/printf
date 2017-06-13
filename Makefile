@@ -1,6 +1,15 @@
 CC=gcc
-FLAGS=-Wall -Werror -Wextra
+FLAGS=
 FILES=main.c argument.c extract_data.c
+OBJECTS=$(FILES:.cpp=.o)
+EXECUTABLE=exe
 
-debug:
-	$(CC) $(FILES)
+all: $(FILES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(FLAGS) $< -o $@
+
+
