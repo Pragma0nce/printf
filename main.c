@@ -31,10 +31,44 @@ t_argument  *add_argument(t_argument *list, char *f, int fw, int prec, char *lm,
     argument->length_modifier = lm;
     argument->conversion_specifier = cs;
     return (argument);
+}
+
+char	*extract_flags(char *str, char *dest)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+' || str[i] == ' '))
+	{
+		dest[i] = str[i];
+		i++;
+	}
+}
+
+int		extract_field_width(char *str)
+{
+	return (atoi(str));
+}
+
+int		extract_precision(char *str)
+{
+	int i;
+
+	i = 0;
+	// Skip over all characters until the period is found.
+	while (str[i] && str[i] != '.')
+		i++;
+}	return (atoi(&str[i]));
+
+char	*extract_length_modifier(char *str)
+{
 
 }
 
+char	*extract_conversion_specifier(char *str)
+{
 
+}
 
 void    ft_putchar(char c)
 {
