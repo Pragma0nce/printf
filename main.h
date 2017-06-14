@@ -15,11 +15,16 @@
 
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
+#include "argument.h"
 
-void	extract_flags(char *str, char *dest);
-int		extract_field_width(char *str);
-int		extract_precision(char *str);
-void	extract_length_modifer(char *str);
-void	extract_conversion_specifier(char *str);
+void	    extract_flags(char *str, char *dest);
+int		    extract_field_width(char *str);
+int		    extract_precision(char *str);
+void	    extract_length_modifier(char *str, char *dest);
+void	    extract_conversion_specifier(char *str);
+char        *is_length_modifier(char *str);
+t_argument  add_argument(t_argument *list, char *f, int fw, int prce, char *lm, char *cs);
+
 
 #endif

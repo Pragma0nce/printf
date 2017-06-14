@@ -12,6 +12,7 @@
 
 #include "argument.h"
 #include <stdlib.h>
+#include <stdarg.h>
 
 t_argument  *add_argument(t_argument *list, char *f, int fw, int prec, char *lm, char *cs)
 {

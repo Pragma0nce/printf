@@ -18,7 +18,7 @@ void extract_flags(char *str, char *dest)
     i = 1;
     while (str[i] && (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+' || str[i] == ' '))
     {
-        dest[i] = str[i];
+        dest[i - 1] = str[i];
         i++;
     }
 }
@@ -47,8 +47,24 @@ int     extract_precision(char *str)
     return (atoi(&str[i]));
 }
 
-void    extract_length_modifier(char *str)
+void    extract_length_modifier(char *str, char *dst)
 {
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (str[i])
+    {
+        if (str[i] == 'h' || str[i] == 'l' || str[i] == 'j' || str[i] == 'z')
+        {
+            dst[j] = str[i];
+            if ((str[i + 1] == 'h' && str[i] == 'h') || (str[i + 1] == 'l' && str[i] == 'l'))
+                dst[j++ + 1] = str[i++ +1];
+            j++;
+        }
+        i++;
+    }
 }
 
 void    extract_conversion_specifier(char *str)

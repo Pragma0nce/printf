@@ -32,15 +32,24 @@ void    ft_putstr(const char *str)
     }
 }
 
-int    is_specifier(const char s)
+char    is_specifier(char s)
 {
     if (s == 's' || s == 'S' || s == 'p' || s == 'd' || s == 'D' || s == 'i'
             || s == 'i' || s == 'o' || s == 'O' || s == 'u' || s == 'U' || s == 'x'
             || s == 'X' || s == 'c' || s == 'C')
     {
-        return (1);
+        return (s);
     }
     return (0);
+}
+
+char     *is_length_modifier(char *str)
+{
+    if ((*str == 'h' && *(str + 1) == 'h') || *str == 'h' || *str == 'l'
+        || (*str == 'l' && *(str + 1)  == 'l') || *str == 'j' || *str == 'z')
+        return (str);
+    else
+        return (NULL);
 }
 
 int ft_printf(const char *format, ...)
@@ -69,18 +78,24 @@ int ft_printf(const char *format, ...)
             if (is_specifier(format[i]))
             {
                 strncpy(temp, start, len_arg);
-                //printf("LEN ARG IS: %s\n", temp);
+                // Null terminate temp
+                temp[len_arg] = '\0';
+                printf("LEN ARG IS: %d\n", len_arg);
 				char flags[20];
 				int width;
 				int precision;
-				extract_flags(temp, flags);
+                char length_modifier[3];
+
+			    extract_flags(temp, flags);
 				width = extract_field_width(temp);
 				precision = extract_precision(temp);
+                extract_length_modifier(temp, length_modifier);
 
 				printf("FORMAT: %s\n", temp);
-				printf("FLAGS: %s\n", flags);
+			    printf("FLAGS: %s\n", flags);
 				printf("FIELD WIDTH: %d\n", width);	
             	printf("PRECISION: %d\n", precision);
+                printf("LENGTH MODIFIER: %s\n", length_modifier);
 			}
         }
         i++;
@@ -92,6 +107,6 @@ int ft_printf(const char *format, ...)
 
 int main(void)
 {
-    ft_printf("yooh%+-5.2d");
+    ft_printf("yooh%+-5.2lld");
 	return (1);
 }
