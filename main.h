@@ -6,7 +6,7 @@
 /*   By: kcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 12:40:48 by kcoetzee          #+#    #+#             */
-/*   Updated: 2017/06/16 10:53:09 by kcoetzee         ###   ########.fr       */
+/*   Updated: 2017/06/16 13:37:48 by kcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ char        *is_length_modifier(char *str);
 char		is_specifier(char str);
 t_argument  add_argument(t_argument *list, char *f, int fw, int prce, char *lm, char *cs);
 
+void	process_conversion(char converter, char *output, int value);
+void	process_flags(char *flags, char converter,  char *output);
 
 #endif

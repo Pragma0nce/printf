@@ -6,7 +6,7 @@
 /*   By: kcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 11:46:01 by kcoetzee          #+#    #+#             */
-/*   Updated: 2017/06/16 10:52:37 by kcoetzee         ###   ########.fr       */
+/*   Updated: 2017/06/16 13:40:00 by kcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int ft_printf(const char *format, ...)
     int arg_integer;
     const char *start;
     char temp[50];
+	char output[50];
     t_argument *arg_list;
 
     va_list args;
@@ -99,6 +100,12 @@ int ft_printf(const char *format, ...)
             	printf("PRECISION: %d\n", precision);
                 printf("LENGTH MODIFIER: %s\n", length_modifier);
 				printf("CONVERTER: %c\n", converter); 
+				
+				int value_int = va_arg(args, int);
+				printf("VALUE: %d\n", value_int);
+				process_flags(flags, converter,  output);
+				process_conversion(converter, output, value_int);
+				ft_putstr(output);
 			}
         }
         i++;
@@ -110,6 +117,6 @@ int ft_printf(const char *format, ...)
 
 int main(void)
 {
-    ft_printf("yooh%+-5.2lld");
+    ft_printf("yooh%#5.2lld", 1234);
 	return (1);
 }
