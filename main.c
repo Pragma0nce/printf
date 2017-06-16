@@ -6,7 +6,7 @@
 /*   By: kcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 11:46:01 by kcoetzee          #+#    #+#             */
-/*   Updated: 2017/06/13 14:47:21 by kcoetzee         ###   ########.fr       */
+/*   Updated: 2017/06/16 10:52:37 by kcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,20 @@ int ft_printf(const char *format, ...)
 				int width;
 				int precision;
                 char length_modifier[3];
+				char converter;
 
 			    extract_flags(temp, flags);
 				width = extract_field_width(temp);
 				precision = extract_precision(temp);
                 extract_length_modifier(temp, length_modifier);
+				converter = extract_conversion_specifier(temp); 
 
 				printf("FORMAT: %s\n", temp);
 			    printf("FLAGS: %s\n", flags);
 				printf("FIELD WIDTH: %d\n", width);	
             	printf("PRECISION: %d\n", precision);
                 printf("LENGTH MODIFIER: %s\n", length_modifier);
+				printf("CONVERTER: %c\n", converter); 
 			}
         }
         i++;

@@ -6,7 +6,7 @@
 /*   By: kcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 11:43:21 by kcoetzee          #+#    #+#             */
-/*   Updated: 2017/06/13 15:12:22 by kcoetzee         ###   ########.fr       */
+/*   Updated: 2017/06/16 10:53:32 by kcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,16 @@ void    extract_length_modifier(char *str, char *dst)
     }
 }
 
-void    extract_conversion_specifier(char *str)
+char    extract_conversion_specifier(char *str)
 {
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (is_specifier(str[i]))
+				return (str[i]);
+		i++;
+	}
+	return (0);
 }

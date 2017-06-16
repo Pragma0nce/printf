@@ -1,6 +1,6 @@
 CC=gcc
 FLAGS=
-FILES=main.c argument.c extract_data.c
+FILES=main.c argument.c extract_data.c process_data.c
 OBJECTS=$(FILES:.cpp=.o)
 EXECUTABLE=exe
 
